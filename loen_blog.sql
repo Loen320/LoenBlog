@@ -306,3 +306,44 @@ INSERT INTO `user` VALUES ('1', 'admin', '123456', '言曌', 'admin@liuyanzhao.c
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+--  Records of `user_login_info`
+-- ----------------------------
+
+DROP TABLE IF EXISTS `user_login_info`;
+CREATE TABLE `user_login_info`  (
+  `login_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '登录id',
+  `login_user` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录用户',
+  `login_ip` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录IP',
+  `login_stamp` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录时间',
+  `country` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '国家',
+  `address` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '登录地址',
+  `isp` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '运营商',
+  `adcode` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮编',
+  `city_code` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '城市代码',
+  `weathercode` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '航标编码',
+  PRIMARY KEY (`login_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of user_login_info
+-- ----------------------------
+INSERT INTO `user_login_info` VALUES (1, 'admin', '0:0:0:0:0:0:0:1', '2008226 10:32:11', '中国', '中国-广东省-深圳', '电信', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (2, 'admin', '0:0:0:0:0:0:0:1', '2020-08-13 11:30:16', '中国', '中国-广东省-深圳', '电信', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (3, 'admin', '0:0:0:0:0:0:0:1', '2020-08-13 13:55:50', '中国', '中国-广东省-深圳', '电信', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (4, 'admin', '0:0:0:0:0:0:0:1', '2020-08-13 14:35:50', '中国', '中国-广东省-深圳', '电信', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (5, 'admin', '0:0:0:0:0:0:0:1', '2020-08-13 14:41:09', '中国', '中国-广东省-深圳', '电信', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (6, 'admin', '14.30.189.164', '2020-08-13 16:10:35', '中国', '中国-广东省-深圳', '阿里云/电信/联通/移动/铁通/教育网', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (7, 'admin', '14.30.189.164', '2020-08-13 17:35:15', '中国', '中国-广东省-深圳', '阿里云/电信/联通/移动/铁通/教育网', '440300', '101280601', '101280601');
+INSERT INTO `user_login_info` VALUES (8, 'admin', '183.42.59.114', '2020-08-14 13:38:33', '中国', '中国-深圳市-广东', 'Chinanet', 'success', '22.5431-1', 'AS4134 CHINANET-BACK');
+INSERT INTO `user_login_info` VALUES (9, 'admin', '183.42.59.114', '2020-08-14 13:40:42', '中国', '中国-深圳市-广东', 'Chinanet', 'success', '22.5431-1', 'AS4134 CHINANET-BACK');
+INSERT INTO `user_login_info` VALUES (10, 'admin', '183.39.155.71', '2020-08-15 09:22:43', '中国', '中国-广州市-广东', 'Chinanet', 'success', '23.1167-1', 'AS4134 CHINANET-BACK');
+INSERT INTO `user_login_info` VALUES (11, 'admin', '47.100.175.76', '2020-08-15 09:58:10', '中国', '中国-西湖-浙江省', 'Addresses CNNIC', 'success', '30.2813-1', 'AS37963 Hangzhou Ali');
+INSERT INTO `user_login_info` VALUES (12, 'admin', '47.100.175.76', '2020-08-15 10:55:58', '中国', '中国-西湖-浙江省', 'Addresses CNNIC', 'success', '30.2813-1', 'AS37963 Hangzhou Ali');
+INSERT INTO `user_login_info` VALUES (13, 'admin', '47.100.175.76', '2020-08-15 13:58:41', '中国', '中国-西湖-浙江省', 'Addresses CNNIC', 'success', '30.2813-1', 'AS37963 Hangzhou Ali');
+INSERT INTO `user_login_info` VALUES (14, 'admin', '183.11.36.155', '2020-08-16 14:29:51', '中国', '中国-深圳市-广东', 'Chinanet', 'success', '22.5333-1', 'AS4134 CHINANET-BACK');
+INSERT INTO `user_login_info` VALUES (15, 'admin', '59.40.180.90', '2020-08-17 14:59:14', '中国', '中国-深圳市-广东', 'Chinanet', 'success', '22.5333-1', 'AS4134 CHINANET-BACK');
+INSERT INTO `user_login_info` VALUES (16, 'admin', '59.40.180.90', '2020-08-17 19:57:59', '中国', '中国-深圳市-广东', 'Chinanet', 'success', '22.5333-1', 'AS4134 CHINANET-BACK');
+
+SET FOREIGN_KEY_CHECKS = 1;

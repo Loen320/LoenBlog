@@ -27,4 +27,3 @@ nbdist/
 .DS_Store
 
 #properties
-*.properties

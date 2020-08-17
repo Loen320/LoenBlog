@@ -42,7 +42,7 @@
 任何问题都可以联系我 <br/>
 Q Q：847064370 <br/>
 微信：847064370 <br/>
-在线留言：[https://liuyanzhao.com/message.html](https://liuyanzhao.com/message.html)
+在线留言：[https://lovedo.top/message](https://lovedo.top/message)
 
 #### 1、克隆项目  <br/>
 克隆或者下载项目到本地，解压，主要分为三个部分：LoenBlog、uploads 和 forest_blog.sql <br/>
