@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.logging.Logger;
 
 /**
  * @author \com
@@ -18,7 +19,7 @@ import java.util.Calendar;
 @RestController
 @RequestMapping("/admin/upload")
 public class UploadFileController {
-
+    Logger logger;
     /**
      * 文件保存目录，物理路径
      */
@@ -75,10 +76,6 @@ public class UploadFileController {
         //3.存储文件
         //将内存中的数据写入磁盘
         try {
-            //更改图片的权限
-            String command = "chmod -R 775 " + descFile;
-            Runtime runtime = Runtime.getRuntime();
-            Process proc = runtime.exec(command);
             //文件上传
             file.transferTo(descFile);
         } catch (Exception e) {
@@ -87,6 +84,21 @@ public class UploadFileController {
         }
         //完整的url
         String fileUrl = "/uploads/" + dateDirs + "/" + newFilename;
+
+        //更改图片的权限
+        Runtime runtime = Runtime.getRuntime();
+        String command = "chmod 775 " + "/data/apps/tomcat9"+fileUrl;
+        try {
+            Process process = runtime.exec(command);
+            process.waitFor();
+            int existValue = process.exitValue();
+            if(existValue != 0){
+                logger.info("Change file permission failed.");
+            }
+        } catch (Exception e) {
+            logger.info("Command execute failed."+ e);
+        }
+
 
         //4.返回URL
         UploadFileVO uploadFileVO = new UploadFileVO();

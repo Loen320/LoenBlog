@@ -85,6 +85,10 @@
 
     <insert id="insert" parameterType="com.wulong.ssm.blog.entity.Article" useGeneratedKeys="true"
             keyProperty="articleId">
+        <!--配置插入操作后，获取插入数据的id（此处id为自增长）-->
+        <selectKey keyProperty="articleId" keyColumn="article_id" resultType="int" order="AFTER">
+            select last_insert_id()
+        </selectKey>
         insert into
         <include refid="tb"/>
         (article_user_id, article_title,
@@ -310,6 +314,7 @@
                 </foreach>
             </if>
         </where>
+        GROUP BY article.article_id
         LIMIT #{limit}
     </select>
 

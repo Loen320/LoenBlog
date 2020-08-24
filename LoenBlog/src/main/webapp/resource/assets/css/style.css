@@ -1756,7 +1756,7 @@ a, button, input {
 }
 
 .single-content code {
-    background: #f1f1f1;
+    background: white;
     color: #555;
     margin: 0 2px;
     padding: 2px 4px;

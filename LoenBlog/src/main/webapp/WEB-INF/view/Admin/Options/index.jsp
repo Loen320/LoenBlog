@@ -140,6 +140,12 @@
                         <input type="text" name="optionReference"  value="${option.optionReference}"    autocomplete="off" class="layui-input">
                     </div>
                 </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">百度收录手动提交地址</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="optionSendToBaiduUrl"  value="${option.optionSendToBaiduUrl}"    autocomplete="off" class="layui-input">
+                    </div>
+                </div>
             </div>
         </div>
 

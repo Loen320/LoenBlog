@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wulong.ssm.blog.mapper.SendResultMapper">
+    <resultMap id="BaseResultMap" type="com.wulong.ssm.blog.entity.SendResult">
+        <id column="article_id" property="articleId" jdbcType="INTEGER"/>
+        <result column="result" property="result" jdbcType="VARCHAR"/>
+        <result column="time_stamp" property="timeStamp" jdbcType="VARCHAR"/>
+        <result column="result_json" property="resultJson" jdbcType="LONGVARCHAR"/>
+        <result column="residue_num" property="residueNum" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="tb">send_result</sql>
+
+    <sql id="Base_Column_List">
+    article_id, result, time_stamp, result_json,residue_num
+    </sql>
+
+    <select id="getSendResultLast" resultMap="BaseResultMap">
+        select * from send_result
+        <where>
+            <if test="timeStamp != null">
+                time_stamp like '#{timeStamp}%'
+            </if>
+        </where>
+        order by time_stamp desc limit 1
+    </select>
+
+    <insert id="insertSendResult" parameterType="com.wulong.ssm.blog.entity.SendResult" useGeneratedKeys="true">
+        insert into
+        <include refid="tb"/>
+        (article_id, result, time_stamp, result_json, residue_num)
+        values (#{articleId,jdbcType=INTEGER},
+        #{result,jdbcType=VARCHAR},
+        #{timeStamp,jdbcType=VARCHAR},
+        #{resultJson,jdbcType=VARCHAR},
+        #{residueNum,jdbcType=INTEGER})
+    </insert>
+
+</mapper>

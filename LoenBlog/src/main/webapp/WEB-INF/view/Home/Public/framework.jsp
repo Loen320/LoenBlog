@@ -31,9 +31,9 @@
     </rapid:block>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/plugin/font-awesome/css/font-awesome.min.css">
-
+    <%--highlight css文件--%>
+    <link rel="stylesheet" href="/css/highlight.min.css">
     <rapid:block name="header-style">
-
     </rapid:block>
 </head>
 <body>
@@ -66,6 +66,9 @@
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
+<%--高亮js--%>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 
 <rapid:block name="footer-script"></rapid:block>
