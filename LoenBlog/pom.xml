@@ -242,6 +242,10 @@
             <scope>compile</scope>
         </dependency>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f51ad0890280a7293f6b10a33e0aef8bd341c633
     </dependencies>
 
     <properties>
