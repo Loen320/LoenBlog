@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+    <meta name="baidu-site-verification" content="Yu6u0HOWpe" />
     <meta name="baidu_union_verify" content="922dd62c94fcc09c6c3feea6062f585f">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,15 +26,14 @@
         <meta name="keywords" content="${options.optionMetaKeyword}"/>
     </rapid:block>
     <rapid:block name="title">
-        <title>
-                ${options.optionSiteTitle}-${options.optionSiteDescrption}
+        <title>${options.optionSiteTitle}-${options.optionSiteDescrption}
         </title>
     </rapid:block>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/plugin/font-awesome/css/font-awesome.min.css">
-
+    <%--highlight css文件--%>
+    <link rel="stylesheet" href="/css/highlight.min.css">
     <rapid:block name="header-style">
-
     </rapid:block>
 </head>
 <body>
@@ -66,6 +66,9 @@
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
+<%--高亮js--%>
+<script src="/js/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
 
 
 <rapid:block name="footer-script"></rapid:block>

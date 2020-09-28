@@ -190,6 +190,13 @@ public interface ArticleMapper {
                                            @Param("limit") Integer limit);
 
     /**
+     * 获取随机数量文章
+     * @param randomLimit 随机数量
+     * @return 随机数目文章列表
+     */
+    List<Article> findArticleByRandom(@Param("limit") Integer randomLimit);
+
+    /**
      * 获得最新文章
      *
      * @param limit 查询数量

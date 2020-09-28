@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid" %>
+<%@ taglib prefix="d" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <rapid:override name="breadcrumb">
@@ -49,7 +50,14 @@
                         <h2 class="entry-title">
                             <a href="/article/${a.articleId}"
                                rel="bookmark">
-                                    ${a.articleTitle}
+                                <c:choose>
+                                    <c:when test="${fn:length(a.articleTitle)>50}">
+                                        ${fn:substring(a.articleTitle,0,50)}...
+                                    </c:when>
+                                    <c:otherwise>
+                                        ${a.articleTitle}
+                                    </c:otherwise>
+                                </c:choose>
                             </a>
                         </h2>
                     </header>

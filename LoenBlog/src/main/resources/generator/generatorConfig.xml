@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="my" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库配置，当mysql版本为5.7及以上时，依赖及Driver和配置信息需自行查找修改；此处mysql为5.6-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/loenblog?serverTimezone=UTC"
+                        userId="root" password="123456"></jdbcConnection>
+        <!--生成实体类-->
+        <javaModelGenerator targetPackage="com.wuloen.entity" targetProject="C:\Users\91943\Desktop">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成mapper文件-->
+        <sqlMapGenerator targetPackage="com.wuloen.mapper.xml" targetProject="C:\Users\91943\Desktop">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--生成持久层接口-->
+        <javaClientGenerator targetPackage="com.wuloen.mapper" targetProject="C:\Users\91943\Desktop" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--所需自动生成代码的数据表，当有多张表时只需要配置多个table标签-->
+        <!--注意1：数据表字段设置成这种：article_id时生成的代码字段名会自动转换成驼峰命名-->
+        <!--注意2：所建的表需包含主键，否则生成的接口及mapper文件只会存在两个insert方法-->
+        <table tableName="article" domainObjectName="article"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+
+    </context>
+</generatorConfiguration>

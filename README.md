@@ -1,20 +1,15 @@
-最新消息，SpringCloud 博客、音乐、商城、论坛系统开发中，开源，[sens-parent](https://github.com/saysky/sens-parent) <br/>
-最新消息，SpringBoot博客已经开源，[SENS](https://github.com/saysky/SENS) <br/>
-最新消息 SpringBoot/SSM两个版本 [初云博客-SpringBoot版本](https://github.com/saysky/ChuyunBlog)
+
 # 关于项目
 
 该博客是基于SSM实现的一个个人博客系统，适合初学SSM和个人博客制作的同学学习。
 主要涉及技术包括的包括 Maven、Spring、SpringMVC、MyBatis、Redis、JSP等。
-前端采用Layui框架和扒了一个[网站](http://liuyanzhao.com)的前台样式。 <br/>
-详细介绍：[https://liuyanzhao.com/6347.html](https://liuyanzhao.com/6347.html)
-
-最新写了一篇该项目的毕业设计论文，需要的朋友可以联系
+前端采用Layui框架和扒了一个[网站](https://lovdo.top)的前台样式。 <br/>
 
 博主提供该项目的讲解，问题解决，部署等服务
 
 ## 效果预览
-因博主服务器数量有限，目前该SSM博客已下线，不提供实时预览，大家可以本地部署。目前部署的是SpringBoot+MyBatis+FreeMarker的博客（已开源：[SENS](https://github.com/saysky/SENS)），样式差不多，特此说明。 <br/>
-预览地址：http://blog.liuyanzhao.com  <br/>
+因博主服务器数量有限，目前该SSM博客已下线，不提供实时预览，大家可以本地部署。目前部署的是SpringBoot+MyBatis+FreeMarker的博客<br/>
+预览地址：http://lovedo.top  
 前台效果图  <br/>
 ![image](uploads/home.png)
 <br/>
@@ -39,8 +34,7 @@
 
 
 #### 5.项目首页没有文件夹名称
-确保 tomcat 配置中 `application context` 是 /，而不是 /ForestBlog。这是导致你们首页css样式全无的原因，因为引用css路径都是 /xxx/xxx.css
-![image](https://github.com/saysky/ForestBlog/blob/master/uploads/tomcat.png)
+确保 tomcat 配置中 `application context` 是 /，而不是 /LoenBlog。这是导致你们首页css样式全无的原因，因为引用css路径都是 /xxx/xxx.css
 
 具体情况请看步骤
 
@@ -48,11 +42,11 @@
 任何问题都可以联系我 <br/>
 Q Q：847064370 <br/>
 微信：847064370 <br/>
-在线留言：[https://liuyanzhao.com/message.html](https://liuyanzhao.com/message.html)
+在线留言：[https://lovedo.top/message](https://lovedo.top/message)
 
 #### 1、克隆项目  <br/>
-克隆或者下载项目到本地，解压，主要分为三个部分：ForestBlog、uploads 和 forest_blog.sql <br/>
-ForestBlog: 完整项目源码, 可以使用 IDEA 导入或者打开  <br/>
+克隆或者下载项目到本地，解压，主要分为三个部分：LoenBlog、uploads 和 forest_blog.sql <br/>
+LoenBlog: 完整项目源码, 可以使用 IDEA 导入或者打开  <br/>
 uploads: 上传图片的目录，与源码分离开来，可以放到物理磁盘某一目录，如D盘某目录，后面会讲 <br/>
 forest_blog.sql: 数据库文件，请先创建数据库，然后以运行sql文件方式导入 <br/>
 
@@ -76,8 +70,7 @@ forest_blog.sql: 数据库文件，请先创建数据库，然后以运行sql文
 1. 修改 UploadFileController.java 中上传路径，需要修改 rootPath 为你指定的 uploads 目录，如 `String rootPath ="E:/uploads/";` <br/>
 如果不修改，会出现无法上传失败；<br/>
 
-2. 给 IDEA 设置静态资源映射，在 tomcat 配置中 Deployment 里面添加，如图
-![image](https://github.com/saysky/ForestBlog/blob/master/uploads/tomcat2.png)
+2. 给 IDEA 设置静态资源映射，在 tomcat 配置中 Deployment 里面添加。
 
 如果你是在 Linux 服务器上部署，需要在 Tomcat 配置文件中添加 <br/>
 在 tomcat/conf/server.xml 的 Host 标签内添加如下代码 <br/>
@@ -87,7 +80,7 @@ forest_blog.sql: 数据库文件，请先创建数据库，然后以运行sql文
 
  
 ## 下载地址：
-Github地址：https://github.com/saysky/ForestBlog
+Github地址：https://github.com/Loen320/LoenBlog
 （如果可以帮忙点一次Star和Fork）
  
 ## 更新记录
@@ -95,21 +88,5 @@ Github地址：https://github.com/saysky/ForestBlog
 大更，重新规范了代码，完善了注释
 
 首次提交：2017年10月10日  <br/>
-
-### 新的架构博客已开源，需要的可以联系博主
-2019年2月(已完成) <br/>
-基于 SpringBoot+ElasticSearch+Shiro+FreeMarker+AdminLte实现，几乎重做，预览地址：http://blog.liuyanzhao.com <br/>
-[SENS](https://github.com/saysky/SENS)
-
-2019年7月(开发中)  <br/>
-前端使用 Vue Element UI改造，后端优化 <br/>
-
-
-## 请喝一杯奶茶
-请我喝一杯奶茶吧！
-插条广告：博主最近有点时间，长期接毕设定制，软件定制，Java问题解决 <br/>
-具体查看[有偿服务](https://liuyanzhao.com/bulletin/my-service)
-
-![image](https://github.com/saysky/ForestBlog/blob/master/uploads/donate.png)
 
 

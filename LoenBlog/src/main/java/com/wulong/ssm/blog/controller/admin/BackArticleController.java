@@ -1,16 +1,14 @@
 package com.wulong.ssm.blog.controller.admin;
 
 import cn.hutool.http.HtmlUtil;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.wulong.ssm.blog.dto.ArticleParam;
-import com.wulong.ssm.blog.entity.Article;
-import com.wulong.ssm.blog.service.ArticleService;
-import com.wulong.ssm.blog.service.CategoryService;
-import com.wulong.ssm.blog.service.TagService;
+import com.wulong.ssm.blog.entity.*;
+import com.wulong.ssm.blog.service.*;
 
-import com.wulong.ssm.blog.entity.Category;
-import com.wulong.ssm.blog.entity.Tag;
-import com.wulong.ssm.blog.entity.User;
+import com.wulong.ssm.blog.util.SendUrlToBaidu;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.wulong.ssm.blog.util.MyUtils.getIpAddr;
 
 
 /**
@@ -40,6 +42,12 @@ public class BackArticleController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private OptionsService optionsService;
+
+    @Autowired
+    private SendResultService sendResultService;
 
     /**
      * 后台文章列表显示
@@ -92,16 +100,18 @@ public class BackArticleController {
             article.setArticleUserId(user.getUserId());
         }
         article.setArticleTitle(articleParam.getArticleTitle());
+
+        String ariticleContent=articleParam.getArticleContent();
         //文章摘要
         int summaryLength = 150;
-        String summaryText = HtmlUtil.cleanHtmlTag(articleParam.getArticleContent());
+        String summaryText = HtmlUtil.cleanHtmlTag(ariticleContent);
         if (summaryText.length() > summaryLength) {
             String summary = summaryText.substring(0, summaryLength);
             article.setArticleSummary(summary);
         } else {
             article.setArticleSummary(summaryText);
         }
-        article.setArticleContent(articleParam.getArticleContent());
+        article.setArticleContent(ariticleContent);
         article.setArticleStatus(articleParam.getArticleStatus());
         //填充分类
         List<Category> categoryList = new ArrayList<>();
@@ -123,6 +133,32 @@ public class BackArticleController {
         article.setTagList(tagList);
 
         articleService.insertArticle(article);
+
+        //提交url到百度
+        String url = optionsService.getOptions().getOptionSendToBaiduUrl();//网站的服务器连接
+        if (!url.isEmpty()) {
+            //需要提交的地址
+            String[] param = {
+                    "https://lovedo.top/article/" + article.getArticleId()
+            };
+            String json = SendUrlToBaidu.Post(url, param);//执行推送方法
+            //登记发送结果
+            SendResult sendResult = new SendResult();
+            if (json.indexOf("success") != -1) {
+                //发送成功
+                JSONObject resultJson = JSON.parseObject(json);
+                sendResult.setResult("success");
+                sendResult.setResidueNum(Integer.parseInt(resultJson.get("remain").toString()));
+            } else {
+                //发送失败
+                sendResult.setResult("fail");
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+            sendResult.setArticleId(article.getArticleId());
+            sendResult.setResultJson(json);
+            sendResult.setTimeStamp(sdf.format(new Date()));
+            sendResultService.insertSendResult(sendResult);
+        }
         return "redirect:/admin/article";
     }
 
@@ -175,11 +211,13 @@ public class BackArticleController {
         Article article = new Article();
         article.setArticleId(articleParam.getArticleId());
         article.setArticleTitle(articleParam.getArticleTitle());
-        article.setArticleContent(articleParam.getArticleContent());
+
+        String ariticleContent=articleParam.getArticleContent();
+        article.setArticleContent(ariticleContent);
         article.setArticleStatus(articleParam.getArticleStatus());
         //文章摘要
         int summaryLength = 150;
-        String summaryText = HtmlUtil.cleanHtmlTag(article.getArticleContent());
+        String summaryText = HtmlUtil.cleanHtmlTag(ariticleContent);
         if (summaryText.length() > summaryLength) {
             String summary = summaryText.substring(0, summaryLength);
             article.setArticleSummary(summary);

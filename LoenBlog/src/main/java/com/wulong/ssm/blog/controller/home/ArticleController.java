@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -70,6 +71,11 @@ public class ArticleController {
         //相关文章
         List<Integer> categoryIds = articleService.listCategoryIdByArticleId(articleId);
         List<Article> similarArticleList = articleService.listArticleByCategoryIds(categoryIds, 5);
+        //若分类文章不足5，则从文章列表中取不足的文章数量
+        if (similarArticleList.size() < 5) {
+            List<Article> similarArticleListRandom=articleService.listArticleByRandom(5-similarArticleList.size());
+            similarArticleList.addAll(similarArticleListRandom);
+        }
         model.addAttribute("similarArticleList", similarArticleList);
 
         //猜你喜欢
@@ -129,6 +135,5 @@ public class ArticleController {
         articleService.updateArticle(article);
         return JSON.toJSONString(articleCount);
     }
-
 
 }

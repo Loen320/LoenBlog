@@ -199,6 +199,12 @@ public interface ArticleService {
      */
     List<Article> listArticleByCategoryIds(List<Integer> cateIds, Integer limit);
 
+    /**
+     * 获取随机数量文章
+     * @param randomLimit 随机数量
+     * @return 文章列表
+     */
+    List<Article> listArticleByRandom(Integer randomLimit);
 
     /**
      * 根据文章ID获得分类ID列表

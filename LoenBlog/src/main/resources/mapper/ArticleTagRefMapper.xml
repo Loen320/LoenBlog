@@ -15,21 +15,21 @@
   </insert>
 
   <delete id="deleteByTagId" parameterType="java.lang.Integer" >
-    delete from <include refid="tb"/> where tag_id = #{value}
+    delete from <include refid="tb"/> where tag_id = #{tagId}
   </delete>
 
   <delete id="deleteByArticleId" parameterType="java.lang.Integer" >
-    delete from <include refid="tb"/> where article_id = #{value}
+    delete from <include refid="tb"/> where article_id = #{articleId}
   </delete>
 
   <select id="countArticleByTagId" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select count(*) from <include refid="tb"/>
-    where tag_id = #{value}
+    where tag_id = #{tagId}
   </select>
 
   <select id="listTagByArticleId" parameterType="java.lang.Integer" resultType="com.wulong.ssm.blog.entity.Tag">
     SELECT tag.* FROM tag, article_tag_ref
-    WHERE article_tag_ref.article_id = #{value} AND
+    WHERE article_tag_ref.article_id = #{articleId} AND
     article_tag_ref.tag_id = tag.tag_id
   </select>
 

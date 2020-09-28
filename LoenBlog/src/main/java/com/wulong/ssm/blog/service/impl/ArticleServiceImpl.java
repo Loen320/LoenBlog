@@ -142,6 +142,10 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void deleteArticle(Integer id) {
         articleMapper.deleteById(id);
+        //删除分类和文章关联
+        articleCategoryRefMapper.deleteByArticleId(id);
+        //删除标签和文章关联
+        articleTagRefMapper.deleteByArticleId(id);
     }
 
 
@@ -251,6 +255,11 @@ public class ArticleServiceImpl implements ArticleService {
             return null;
         }
         return articleMapper.findArticleByCategoryIds(cateIds, limit);
+    }
+
+    @Override
+    public List<Article> listArticleByRandom(Integer randomLimit) {
+        return articleMapper.findArticleByRandom(randomLimit);
     }
 
     @Override

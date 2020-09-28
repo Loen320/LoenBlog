@@ -107,6 +107,7 @@ public class CategoryServiceImpl implements CategoryService {
         try {
             categoryList = categoryMapper.listCategory();
             for (int i = 0; i < categoryList.size(); i++) {
+                //统计分类下文章数量
                 Integer count = articleCategoryRefMapper.countArticleByCategoryId(categoryList.get(i).getCategoryId());
                 categoryList.get(i).setArticleCount(count);
             }

@@ -109,7 +109,7 @@
 
     <blockquote class="layui-elem-quote layui-quote-nm">
         温馨提示：
-        1、插入代码前，可以点击 <a href="http://liuyanzhao.com/code-highlight.html" target="_blank">代码高亮</a>,将代码转成HTML格式
+        1、插入代码时，可使用标签&ltpre&gt&ltcode&gt&lt/code&gt&lt/pre&gt包裹代码，将会自动使用highlight，自动识别程序语言
     </blockquote>
 
 </rapid:override>

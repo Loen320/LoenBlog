@@ -12,7 +12,7 @@
     <%--关于本站 start--%>
     <aside class="widget about">
         <h3 class="widget-title">
-            <i class="fa fa-thumbs-o-up"></i>关于本站
+            <i class="fa fa-bars"></i>关于本站
         </h3>
         <div id="feed_widget">
             <div class="feed-about">
@@ -70,7 +70,7 @@
     <%--网站概况 start--%>
     <aside id="php_text-22" class="widget php_text">
         <h3 class="widget-title">
-            <i class="fa fa-thumbs-o-up"></i>网站概况
+            <i class="fa fa-bars"></i>网站概况
         </h3>
         <div class="textwidget widget-text">
             <ul class="site-profile">
@@ -95,7 +95,7 @@
     <%--所有标签 start--%>
     <aside class="widget">
         <h3 class="widget-title">
-            <i class="fa fa-thumbs-o-up"></i>所有标签
+            <i class="fa fa-bars"></i>所有标签
         </h3>
         <div class="tagcloud">
             <c:forEach items="${allTagList}" var="tag">
@@ -114,7 +114,7 @@
 
     <%--最新评论 start--%>
     <aside id="recent_comments-2" class="widget recent_comments wow fadeInUp" data-wow-delay="0.3s"><h3
-            class="widget-title"><i class="fa fa-thumbs-o-up"></i>近期评论</h3>
+            class="widget-title"><i class="fa fa-bars"></i>近期评论</h3>
         <div id="message" class="message-widget">
             <ul>
                 <c:forEach items="${recentCommentList}" var="r">

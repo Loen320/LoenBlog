@@ -25,6 +25,3 @@ nbdist/
 
 #Mac
 .DS_Store
-
-#properties
-*.properties

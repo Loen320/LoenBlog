@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.logging.Logger;
 
 /**
  * @author \com
@@ -18,7 +19,7 @@ import java.util.Calendar;
 @RestController
 @RequestMapping("/admin/upload")
 public class UploadFileController {
-
+    Logger logger;
     /**
      * 文件保存目录，物理路径
      */
@@ -70,15 +71,26 @@ public class UploadFileController {
         if (!descFile.getParentFile().exists()) {
             //如果目标文件所在的目录不存在，则创建父目录
             descFile.getParentFile().mkdirs();
+            //给文件夹赋予权限
+            //目录url
+            String discovery = rootPath + File.separator + dateDirs + File.separator;
+            Runtime runtime2 = Runtime.getRuntime();
+            String command2 = "chmod -R 755 " + discovery;
+            try {
+                Process process2 = runtime2.exec(command2);
+                process2.waitFor();
+                int existValue2 = process2.exitValue();
+                if(existValue2 != 0){
+                    logger.info("Change discovery permission failed.");
+                }
+            } catch (Exception e) {
+                logger.info("Command execute failed."+ e);
+            }
         }
 
         //3.存储文件
         //将内存中的数据写入磁盘
         try {
-            //更改图片的权限
-            String command = "chmod -R 775 " + descFile;
-            Runtime runtime = Runtime.getRuntime();
-            Process proc = runtime.exec(command);
             //文件上传
             file.transferTo(descFile);
         } catch (Exception e) {
@@ -88,10 +100,29 @@ public class UploadFileController {
         //完整的url
         String fileUrl = "/uploads/" + dateDirs + "/" + newFilename;
 
+        //更改图片的权限
+        Runtime runtime = Runtime.getRuntime();
+        String command = "chmod 755 " + "/data/apps/tomcat9"+fileUrl;
+        try {
+            Process process = runtime.exec(command);
+            process.waitFor();
+            int existValue = process.exitValue();
+            if(existValue != 0){
+                logger.info("Change file permission failed.");
+            }
+        } catch (Exception e) {
+            logger.info("Command execute failed."+ e);
+        }
+
+
         //4.返回URL
         UploadFileVO uploadFileVO = new UploadFileVO();
         uploadFileVO.setTitle(filename);
         uploadFileVO.setSrc(fileUrl);
         return new JsonResult().ok(uploadFileVO);
+    }
+
+    public static void main(String[] args) {
+
     }
 }

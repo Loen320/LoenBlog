@@ -11,7 +11,6 @@
 
 <rapid:override name="header-style">
     <rapid:override name="header-style">
-        <link rel="stylesheet" href="/css/highlight.css">
         <style>
             .entry-title {
                 background: #f8f8f8;

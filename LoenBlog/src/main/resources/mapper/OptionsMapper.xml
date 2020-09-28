@@ -18,13 +18,14 @@
         <result column="option_aboutsite_weibo" property="optionAboutsiteWeibo" jdbcType="VARCHAR"/>
         <result column="option_tongji" property="optionTongji" jdbcType="VARCHAR"/>
         <result column="option_status" property="optionStatus" jdbcType="INTEGER"/>
+        <result column="option_send_to_baidu_url" property="optionSendToBaiduUrl" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     option_id, option_site_title, option_reference_id, option_reference, option_site_descrption, option_meta_descrption, option_meta_keyword,
     option_aboutsite_avatar, option_aboutsite_title, option_aboutsite_content, option_aboutsite_wechat, 
     option_aboutsite_qq, option_aboutsite_github, option_aboutsite_weibo, option_tongji, 
-    option_status
+    option_status, option_send_to_baidu_url
   </sql>
 
     <sql id="tb">options</sql>
@@ -53,7 +54,7 @@
         option_aboutsite_avatar, option_aboutsite_title,
         option_aboutsite_content, option_aboutsite_wechat,
         option_aboutsite_qq, option_aboutsite_github,
-        option_aboutsite_weibo, option_tongji, option_status
+        option_aboutsite_weibo, option_tongji, option_status, option_send_to_baidu_url
         )
         values (#{optionId,jdbcType=INTEGER},
         #{optionSiteTitle,jdbcType=VARCHAR},
@@ -63,7 +64,8 @@
         #{optionAboutsiteAvatar,jdbcType=VARCHAR}, #{optionAboutsiteTitle,jdbcType=VARCHAR},
         #{optionAboutsiteContent,jdbcType=VARCHAR}, #{optionAboutsiteWechat,jdbcType=VARCHAR},
         #{optionAboutsiteQq,jdbcType=VARCHAR}, #{optionAboutsiteGithub,jdbcType=VARCHAR},
-        #{optionAboutsiteWeibo,jdbcType=VARCHAR}, #{optionTongji,jdbcType=VARCHAR}, #{optionStatus,jdbcType=INTEGER}
+        #{optionAboutsiteWeibo,jdbcType=VARCHAR}, #{optionTongji,jdbcType=VARCHAR}, #{optionStatus,jdbcType=INTEGER},
+        #{optionSendToBaiduUrl,jdbcType=VARCHAR}
         )
     </insert>
 
@@ -97,7 +99,8 @@
             <if test="optionAboutsiteWeibo != null">option_aboutsite_weibo = #{optionAboutsiteWeibo,jdbcType=VARCHAR},
             </if>
             <if test="optionTongji != null">option_tongji = #{optionTongji,jdbcType=VARCHAR},</if>
-            <if test="optionStatus != null">option_status = #{optionStatus,jdbcType=INTEGER}</if>
+            <if test="optionStatus != null">option_status = #{optionStatus,jdbcType=INTEGER},</if>
+            <if test="optionSendToBaiduUrl != null">option_send_to_baidu_url = #{optionSendToBaiduUrl,jdbcType=VARCHAR},</if>
         </set>
         where option_id = #{optionId,jdbcType=INTEGER}
     </update>
