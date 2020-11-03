@@ -139,11 +139,7 @@ public class BackArticleController {
         if (!url.isEmpty()) {
             //需要提交的地址
             String[] param = {
-<<<<<<< HEAD
                     "https://lovedo.top/article/" + article.getArticleId()
-=======
-                    "https://www.lovedo.top/article/" + article.getArticleId()
->>>>>>> f51ad0890280a7293f6b10a33e0aef8bd341c633
             };
             String json = SendUrlToBaidu.Post(url, param);//执行推送方法
             //登记发送结果

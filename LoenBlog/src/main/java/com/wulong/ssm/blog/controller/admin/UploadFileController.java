@@ -102,11 +102,7 @@ public class UploadFileController {
 
         //更改图片的权限
         Runtime runtime = Runtime.getRuntime();
-<<<<<<< HEAD
         String command = "chmod 755 " + "/data/apps/tomcat9"+fileUrl;
-=======
-        String command = "chmod 775 " + "/data/apps/tomcat9"+fileUrl;
->>>>>>> f51ad0890280a7293f6b10a33e0aef8bd341c633
         try {
             Process process = runtime.exec(command);
             process.waitFor();
@@ -124,9 +120,5 @@ public class UploadFileController {
         uploadFileVO.setTitle(filename);
         uploadFileVO.setSrc(fileUrl);
         return new JsonResult().ok(uploadFileVO);
-    }
-
-    public static void main(String[] args) {
-
     }
 }

@@ -194,7 +194,7 @@ public interface ArticleMapper {
      * @param randomLimit 随机数量
      * @return 随机数目文章列表
      */
-    List<Article> findArticleByRandom(@Param("limit") Integer randomLimit);
+    List<Article> findArticleByRandom(@Param("randomLimit") Integer randomLimit);
 
     /**
      * 获得最新文章
